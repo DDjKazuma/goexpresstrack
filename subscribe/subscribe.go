@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"bytes"
 	"encoding/json"
-	"../lib"
+	"github.com/express-track/lib"
 )
 
 func main() {

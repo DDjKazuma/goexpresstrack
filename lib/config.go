@@ -1,7 +1,7 @@
 package lib
 
 const(
-	DbHost = ""
+	DbHost = ""//置空表示选择本地数据库
 	DbPort = ""
 	DbUser = "root"
 	DbPassword = "194466"

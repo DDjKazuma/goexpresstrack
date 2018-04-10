@@ -70,7 +70,13 @@ func (User) TableName() string {
 
 //获取数据库的连接
 func GetDc() *gorm.DB {
-	dc, err := gorm.Open("mysql", "root:194466@/demo?charset=utf8&loc=Local")
+	//dc, err := gorm.Open("mysql", "user:password@tcp(host:port)/database?charset=utf8")
+	var tcpConn string
+	if DbHost != ""{
+		tcpConn =  "tcp("+DbHost+":"+DbPort +")"
+	}
+	mysqlDsn := DbUser+ ":"+DbPassword + "@" + tcpConn + "/" + DbName + "?charset=utf8"
+	dc, err := gorm.Open("mysql", mysqlDsn)
 	if err != nil {
 		panic("can't connect to database")
 	}

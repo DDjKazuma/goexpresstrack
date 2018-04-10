@@ -29,7 +29,7 @@ func main() {
 		h := sha256.New()
 		h.Write([]byte(user+time.Now().String()))
 		finalKey := hex.EncodeToString(h.Sum(nil))
-		err := rc.Set(user,finalKey,time.Second * 10).Err()
+		err := rc.Set(user,finalKey,time.Hour * 1).Err()
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, "internal server error, please try later")
 		}
@@ -38,7 +38,7 @@ func main() {
 
 
 
-	router.Run()
+	router.Run(":"+lib.WebPort)
 }
 
 var dbConn *gorm.DB
